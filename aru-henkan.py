@@ -47,16 +47,14 @@ class AruHenkan():
             (orig_text, kana, word_type) = item
             # 名詞だけ"ある変換"を行う
             if word_type.find("名詞") != -1:
-                RKC.set_text("kana", kana)
-                converted_roma = self.conversion(RKC.kana2roma(_print=True))
-                RKC.set_text("roma", converted_roma)
-                orig_text = RKC.roma2kana(_print=True)
+                converted_roma = self.conversion(RKC.kana2roma(kana, _print=False))
+                orig_text = RKC.roma2kana(converted_roma, _print=False)
             converted_text+=orig_text
         return converted_text
 
 if __name__ == '__main__':
     AH = AruHenkan()
-    for i in range(10):
+    for i in range(3):
         text = input()
         print("↓ある変換")
         print(AH.aru_henkan(text))

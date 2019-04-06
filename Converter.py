@@ -35,7 +35,7 @@ class RomaKanaConverter:
             if (self.roma_text[i] in vowel) and (i+1 < len(self.roma_text)):
                 token_idx.append(i+1)
             # 現在地からnが2個連続 2個後の文字から違うトークン 
-            elif (self.roma_text[i-1] in vowel and self.roma_text[i] == 'n' and self.roma_text[i+1] == 'n') and (i+1 < len(self.roma_text)):
+            elif (self.roma_text[i-1] in vowel and self.roma_text[i] == 'n' and self.roma_text[i+1] == 'n') and (i+2 < len(self.roma_text)):
                 token_idx.append(i+2)
         token_idx = list(set(token_idx))
 
@@ -45,10 +45,10 @@ class RomaKanaConverter:
                 roma_token_list.append(self.roma_text[ token_idx[i] : ])
             else:
                 roma_token_list.append(self.roma_text[ token_idx[i] : token_idx[i+1] ])
-
         return roma_token_list
 
-    def roma2kana(self, _print=False):
+    def roma2kana(self, text, _print=False):
+        self.set_text("roma", text)
         self.kana_text = ""
         roma_token_list = self.tokenize_roma()
         for token in roma_token_list:
@@ -57,7 +57,8 @@ class RomaKanaConverter:
             print(self.kana_text)
         return self.kana_text
 
-    def kana2roma(self, _print=False):
+    def kana2roma(self, text, _print=False):
+        self.set_text("kana", text)
         self.roma_text = ""
         kana_token_list = self.tokenize_kana()
         for token in kana_token_list:
@@ -76,12 +77,10 @@ if __name__ == "__main__":
     RKC = RomaKanaConverter()
     print("モライモライ")
     print("↓")
-    RKC.set_text("kana", "モライモライ")
-    RKC.kana2roma(_print=True)
+    RKC.kana2roma("モライモライ",_print=True)
 
     RKC = RomaKanaConverter()
     print("konnnitiha")
     print("↓")
-    RKC.set_text("roma", "konnnitiha")
-    RKC.roma2kana(_print=True)
+    RKC.roma2kana("konnnitiha", _print=True)
 
