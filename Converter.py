@@ -2,15 +2,7 @@
 
 class RomaKanaConverter:
     # mode: "kana" or "roma"
-    def __init__(self, text, mode):
-        # set kana or roma mode
-        if mode == "kana":
-            self.kana_text = text
-        elif mode == "roma":
-            self.roma_text = text
-        else:
-            print("set mode correctly")
-
+    def __init__(self):
         self.create_dict()
         
     def create_dict(self):
@@ -74,14 +66,22 @@ class RomaKanaConverter:
             print(self.roma_text)
         return self.roma_text
 
+    def set_text(self, mode, text):
+        if mode == "roma":
+            self.roma_text = text
+        elif mode == "kana":
+            self.kana_text = text
+
 if __name__ == "__main__":
-    RKC = RomaKanaConverter("モライモライ", mode="kana")
+    RKC = RomaKanaConverter()
     print("モライモライ")
     print("↓")
+    RKC.set_text("kana", "モライモライ")
     RKC.kana2roma(_print=True)
 
-    RKC = RomaKanaConverter("konnnitiha", mode="roma")
+    RKC = RomaKanaConverter()
     print("konnnitiha")
     print("↓")
+    RKC.set_text("roma", "konnnitiha")
     RKC.roma2kana(_print=True)
 
