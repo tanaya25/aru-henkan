@@ -11,5 +11,5 @@ $ python aru-henkan.py
 オタクはモリモリと飯を食えとか入力してください
 
 # 参考サイト
-[Windows で pip で mecab-python をいれる](https://qiita.com/yukinoi/items/990b6933d9f21ba0fb43)
+[Windows で pip で mecab-python をいれる](https://qiita.com/yukinoi/items/990b6933d9f21ba0fb43)  
 [ローマ字をかなに変換したい（願望）(Python)](http://cylomw.hatenablog.com/entry/2016/12/06/131418)
